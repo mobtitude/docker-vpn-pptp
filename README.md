@@ -19,7 +19,7 @@ username    *           password    *
 To start VPN server as a docker container run:
 
 ````
-docker run -d --privileged -p 1723:1723 -v {local_path_to_chap_secrets}:/etc/ppp/chap-secrets mobtitude/vpn
+docker run -d --privileged -p 1723:1723 -v {local_path_to_chap_secrets}:/etc/ppp/chap-secrets mobtitude/vpn-pptp
 ````
 
 Edit your local _chap-secrets_ file, to add or modify VPN users whenever you need.
