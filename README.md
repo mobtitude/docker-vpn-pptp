@@ -30,3 +30,20 @@ You can use any VPN (PPTP) client to connect to the service.
 To authenticate use credentials provided in _chap-secrets_ file.
 
 
+## Troubleshooting 
+
+### Docker 1.7.x and connection issues
+After upgrading from Docker 1.3.0 to Docker 1.7.1 the containers started from image `mobtitude/vpn-pptp` stopped accepting connections to VPN without any reason.
+Connections were dropped after timeout. 
+
+It looked like Docker deamon didn't forward packets for GRE protocol to container.
+
+One of the possible solutions is to start container with networking mode set to host by adding param `--net=host` to run command:
+
+````
+docker run -d --privileged --net=host -v {local_path_to_chap_secrets}:/etc/ppp/chap-secrets mobtitude/vpn-pptp
+````
+
+**Note:** Before starting container in `--net=host` mode, please read how networking in `host` mode works in Docker:
+https://docs.docker.com/reference/run/#mode-host
+
