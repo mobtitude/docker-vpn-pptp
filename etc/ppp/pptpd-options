@@ -21,3 +21,4 @@ nobsdcomp
 novj
 novjccomp
 nologfd
+mtu 1400
